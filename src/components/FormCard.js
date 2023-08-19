@@ -10,6 +10,8 @@ import {
   RadioGroup,
   TextField,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 
 export const FormCard = () => {
@@ -32,13 +34,20 @@ export const FormCard = () => {
     setDataForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const theme = useTheme();
+  const laptop = useMediaQuery(theme.breakpoints.up("lg"));
   return (
     <Card
-      sx={{
+      sx={ laptop ? {
         width: "65%",
         height: "480px",
         marginTop: "20px",
         padding: "2em",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+      } : {
+        padding: '1em',
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
@@ -48,17 +57,21 @@ export const FormCard = () => {
         <img src="./citycar-logo-sinfondo.png" />
       </Box>
       <Typography
-        sx={{
+        sx={ laptop ? {
           fontSize: "1.2em",
+          textAlign: "center",
+          textTransform: "uppercase",
+        } : {
+          fontSize: '1em',
           textAlign: "center",
           textTransform: "uppercase",
         }}
       >
         Completar los datos del formulario
       </Typography>
-      <Box sx={{ width: "90%", margin: "10px auto", display: "flex" }}>
-        <Box sx={{ width: "60%" }}>
-          <Box>
+      <Box sx={ laptop ? { width: "90%", margin: "10px auto", display: "flex" } : {}}>
+        <Box sx={ laptop ? { width: "60%" }: {}}>
+          <Box sx={ laptop ? { } : { paddingLeft: '50px', marginTop: '10px' }}>
             <Typography sx={{ marginBottom: "10px" }}>
               Información sobre el vehículo
             </Typography>
@@ -72,13 +85,13 @@ export const FormCard = () => {
             <TextField
               label="Valor vehículo"
               size="small"
-              sx={{ margin: "0px 15px" }}
+              sx={ laptop ? { margin: "0px 15px" } : {margin: '10px 0px'}}
               name="value"
               onChange={handleChange}
               value={dataForm.value}
             />
           </Box>
-          <Box sx={{ margin: "20px 0px" }}>
+          <Box sx={ laptop ? { margin: "20px 0px" } : {margin: '10px auto', paddingLeft: '50px' }}>
             <Typography sx={{ marginBottom: "15px" }}>
               CUOTAS (completar sólo uno)
             </Typography>
@@ -88,18 +101,20 @@ export const FormCard = () => {
               name="feeAmount"
               onChange={handleChange}
               value={dataForm.feeAmount}
+              disabled={dataForm.feeValue !== '' ? true : false}
             />
             <TextField
               label="Valor de cuota"
               size="small"
-              sx={{ margin: "0px 15px" }}
+              sx={ laptop ? { margin: "0px 15px" } : {margin: '10px 0px'}}
               name="feeValue"
               onChange={handleChange}
               value={dataForm.feeValue}
+              disabled={dataForm.feeAmount !== '' ? true : false}
             />
           </Box>
         </Box>
-        <Box sx={{ width: "40%" }}>
+        <Box sx={ laptop ? { width: "40%" } : {}}>
           <Box
             sx={{
               display: "flex",
