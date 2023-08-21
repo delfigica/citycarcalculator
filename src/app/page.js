@@ -1,9 +1,8 @@
 
-import { FormCard } from "../components/FormCard";
 import React from "react";
 import { Box } from "@mui/material";
+import { CardLayout } from "@/components/CardLayout";
 export default function Home() {
-
   return (
     <Box
       sx={{
@@ -15,7 +14,7 @@ export default function Home() {
         minHeight: "100vh",
       }}
     >
-      <FormCard />
+      <CardLayout />
     </Box>
   );
 }
