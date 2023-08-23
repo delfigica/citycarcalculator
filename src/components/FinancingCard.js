@@ -38,12 +38,12 @@ const FinancingCard = ({ setDataForm, dataForm, setshowFinancing }) => {
     <Box>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Box sx={{ width: "120px" }}>
-              <img src="./citycar-logo-sinfondo.png" />
+              <img src="./citycar-logo-sinfondo.png" alt='logo City Car' />
             </Box>
           </Box>
           <Box sx={laptop ? { margin: "20px 50px" } : { margin: "5px 10px" }}>
             <Typography sx={{ fontSize: "1.3em" }}>
-              Financiamiento por "{dataForm?.name}"
+              Financiamiento por {dataForm?.name}
             </Typography>
             <Box sx={{ display: "flex" }}>
               {dataForm.instalmentValue.length !== 0 && (
