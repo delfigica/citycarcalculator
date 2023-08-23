@@ -135,7 +135,7 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
           }}
         >
           <Box sx={{ width: "120px" }}>
-            <Image src="/citycar-logo-sinfondo.png" width={120} height={120} />
+            <Image src="/images/citycar-logo-sinfondo.png" width={120} height={120} />
           </Box>
           <Typography
             sx={
