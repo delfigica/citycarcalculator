@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Calculadora de Financiamiento de Vehículos de City Car
 
-## Getting Started
+Bienvenido/a a la Calculadora de Financiamiento de Vehículos. Esta aplicación está desarrollada utilizando Next.js y Material-UI para proporcionar una interfaz de usuario intuitiva y atractiva.
 
-First, run the development server:
+## Descripción
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+La Calculadora de Financiamiento de Vehículos te permite calcular la financiación para un vehículo ingresando los datos necesarios. Puedes obtener información sobre la cantidad de cuotas o el valor de las cuotas, lo que te ayudará a tomar decisiones informadas sobre tu financiamiento.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Características
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Interfaz de usuario amigable y moderna desarrollada con Material-UI.
+- Formulario interactivo para ingresar los datos del vehículo y obtener los detalles de financiamiento.
+- Cálculos precisos basados en la información proporcionada.
+- Respuestas rápidas y precisas para ayudarte a tomar decisiones financieras.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Cómo Ejecutar la Aplicación
 
-## Learn More
+1. Clona este repositorio: `git clone https://github.com/delfigica/citycarcalculator.git`
+2. Instala las dependencias: `npm install`
+3. Ejecuta la aplicación: `npm run dev`
+4. Abre tu navegador y ve a `http://localhost:3000`
 
-To learn more about Next.js, take a look at the following resources:
+## Tecnologías Utilizadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js](https://nextjs.org/)
+- [Material-UI](https://mui.com/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contribución
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+¡Las contribuciones son bienvenidas! Si encuentras errores o tienes ideas para mejoras, no dudes en abrir un issue o enviar un pull request.
