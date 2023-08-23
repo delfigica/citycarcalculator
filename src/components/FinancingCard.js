@@ -45,7 +45,7 @@ const FinancingCard = ({ setDataForm, dataForm, setshowFinancing }) => {
     <Box>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box sx={{ width: "120px" }}>
-          <Image src="/images/citycar-logo-sinfondo.png" width={120} height={120} />
+          <Image src="https://github.com/delfigica/citycarcalculator/blob/main/public/images/citycar-logo-sinfondo.png" width={120} height={120} />
         </Box>
       </Box>
       <Box sx={laptop ? { margin: "20px 50px" } : { margin: "5px 10px" }}>
