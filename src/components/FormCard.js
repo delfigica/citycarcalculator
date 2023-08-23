@@ -11,6 +11,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import Image from "next/image";
 
 export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
   const [handingOver, setHandingOver] = useState("false");
@@ -134,7 +135,7 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
           }}
         >
           <Box sx={{ width: "120px" }}>
-            <img src="./citycar-logo-sinfondo.png" />
+            <Image src="/citycar-logo-sinfondo.png" width={120} height={120} />
           </Box>
           <Typography
             sx={
