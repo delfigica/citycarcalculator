@@ -135,7 +135,7 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
           }}
         >
           <Box sx={{ width: "120px" }}>
-            <Image src="https://github.com/delfigica/citycarcalculator/blob/main/public/images/citycar-logo-sinfondo.png" width={120} height={120} />
+            <Image src="https://raw.githubusercontent.com/delfigica/citycarcalculator/main/public/images/citycar-logo-sinfondo.png" width={120} height={120} />
           </Box>
           <Typography
             sx={
