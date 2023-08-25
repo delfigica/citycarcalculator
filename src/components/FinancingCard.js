@@ -26,16 +26,17 @@ const FinancingCard = ({ setDataForm, dataForm, setshowFinancing }) => {
   const clickBoard = () => {
     let value =
       dataForm.instalmentValue.length !== 0
-        ? `Entrega $${dataForm.instalmentValue}`
+        ? `Entrega $ ${dataForm.instalmentValue}`
         : "";
     let vehicle =
       dataForm.instalmentVehicleName.length !== 0
         ? `(${dataForm.instalmentVehicleName})`
         : "";
-    let finance = `*Financiamiento por ${dataForm.name}*
-        ${value} ${vehicle}
-        Valor de cuota: $${dataForm.feeValue}
-        Cuotas a abonar: ${dataForm.feeAmount}`;
+        console.log(value, vehicle)
+    let finance = `*Financiación por ${dataForm.name.trim()}*` +
+    (value ? `\n${value} ${vehicle}` : '') +
+    `\nValor de cuota: $ ${dataForm.feeValue}` +
+    `\nCuotas a abonar: ${dataForm.feeAmount}`
     navigator.clipboard.writeText(finance);
   };
 
