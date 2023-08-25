@@ -6,6 +6,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import React from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import Image from "next/image";
@@ -23,20 +24,20 @@ const FinancingCard = ({ setDataForm, dataForm, setshowFinancing }) => {
     setshowFinancing(false);
   };
 
-  const clickBoard = () => {
-    let value =
-      dataForm.instalmentValue.length !== 0
-        ? `Entrega $ ${dataForm.instalmentValue}`
-        : "";
-    let vehicle =
-      dataForm.instalmentVehicleName.length !== 0
-        ? `(${dataForm.instalmentVehicleName})`
-        : "";
-        console.log(value, vehicle)
-    let finance = `*Financiación por ${dataForm.name.trim()}*` +
-    (value ? `\n${value} ${vehicle}` : '') +
-    `\nValor de cuota: $ ${dataForm.feeValue}` +
-    `\nCuotas a abonar: ${dataForm.feeAmount}`
+  let value =
+    dataForm.instalmentValue.length !== 0
+      ? `Entrega $ ${dataForm.instalmentValue}`
+      : "";
+  let vehicle =
+    dataForm.instalmentVehicleName.length !== 0
+      ? `(${dataForm.instalmentVehicleName})`
+      : "";
+      console.log(value, vehicle)
+  let finance = `*Financiación por ${dataForm.name.trim()}*` +
+  (value ? `\n${value} ${vehicle}` : '') +
+  `\nValor de cuota: $ ${dataForm.feeValue}` +
+  `\nCuotas a abonar: ${dataForm.feeAmount}`
+    const clickBoard = () => {
     navigator.clipboard.writeText(finance);
   };
 
@@ -74,6 +75,11 @@ const FinancingCard = ({ setDataForm, dataForm, setshowFinancing }) => {
           margin: "20px 0px",
         }}
       >
+        <a href={`https://api.whatsapp.com/send?text=${finance}`}>
+        <IconButton >
+          <WhatsAppIcon />
+        </IconButton>
+        </a>
         <IconButton onClick={clickBoard}>
           <ContentCopyIcon />
         </IconButton>
