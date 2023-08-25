@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import {
   Box,
   Button,
@@ -15,10 +15,10 @@ import {
 } from "@mui/material";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import Image from "next/image";
-import { NumericFormat } from 'react-number-format';
+import { NumericFormat } from "react-number-format";
 const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
   props,
-  ref,
+  ref
 ) {
   const { onChange, ...other } = props;
 
@@ -104,9 +104,9 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
         if (parseInt(dataForm.feeAmount) >= 42) {
           let value =
             (totalValue * 0.4 + totalValue) / parseInt(dataForm.feeAmount);
-          console.log("value: ", totalValue);
+          let roundValue = Math.round(value);
           setDataForm((prev) => {
-            return { ...prev, feeValue: Math.round(value) };
+            return { ...prev, feeValue: Math.ceil(roundValue / 1000) * 1000 };
           });
         } else if (
           parseInt(dataForm.feeAmount) >= 30 &&
@@ -114,8 +114,9 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
         ) {
           let value =
             (totalValue * 0.3 + totalValue) / parseInt(dataForm.feeAmount);
+          let roundValue = Math.round(value);
           setDataForm((prev) => {
-            return { ...prev, feeValue: Math.round(value) };
+            return { ...prev, feeValue: Math.ceil(roundValue / 1000) * 1000 };
           });
         } else if (
           parseInt(dataForm.feeAmount) >= 24 &&
@@ -123,8 +124,9 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
         ) {
           let value =
             (totalValue * 0.25 + totalValue) / parseInt(dataForm.feeAmount);
+          let roundValue = Math.round(value);
           setDataForm((prev) => {
-            return { ...prev, feeValue: Math.round(value) };
+            return { ...prev, feeValue: Math.ceil(roundValue / 1000) * 1000 };
           });
         } else if (
           parseInt(dataForm.feeAmount) >= 18 &&
@@ -132,8 +134,9 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
         ) {
           let value =
             (totalValue * 0.15 + totalValue) / parseInt(dataForm.feeAmount);
+          let roundValue = Math.round(value);
           setDataForm((prev) => {
-            return { ...prev, feeValue: Math.round(value) };
+            return { ...prev, feeValue: Math.ceil(roundValue / 1000) * 1000 };
           });
         } else if (
           parseInt(dataForm.feeAmount) >= 12 &&
@@ -141,13 +144,15 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
         ) {
           let value =
             (totalValue * 0.1 + totalValue) / parseInt(dataForm.feeAmount);
+          let roundValue = Math.round(value);
           setDataForm((prev) => {
-            return { ...prev, feeValue: Math.round(value) };
+            return { ...prev, feeValue: Math.ceil(roundValue / 1000) * 1000 };
           });
         } else if (parseInt(dataForm.feeAmount) < 12) {
           let value = totalValue / parseInt(dataForm.feeAmount);
+          let roundValue = Math.round(value);
           setDataForm((prev) => {
-            return { ...prev, feeValue: Math.round(value) };
+            return { ...prev, feeValue: Math.ceil(roundValue / 1000) * 1000 };
           });
         }
       }
@@ -193,13 +198,11 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
       </Typography>
       <Box
         sx={
-          laptop
-            ? { width: "90%", margin: "10px auto", display: "flex" }
-            : {  }
+          laptop ? { width: "90%", margin: "10px auto", display: "flex" } : {}
         }
       >
         <Box sx={laptop ? { width: "60%" } : {}}>
-          <Box sx={laptop ? {} : { marginTop: "10px", padding: '0px 50px' }}>
+          <Box sx={laptop ? {} : { marginTop: "10px", padding: "0px 50px" }}>
             <Typography sx={{ marginBottom: "10px" }}>
               Información sobre el vehículo
             </Typography>
@@ -233,7 +236,13 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
               fullWidth
             />
           </Box>
-          <Box sx={laptop ? { margin: "20px 0px" } : { margin: "10px auto", padding: '0px 50px' }}>
+          <Box
+            sx={
+              laptop
+                ? { margin: "20px 0px" }
+                : { margin: "10px auto", padding: "0px 50px" }
+            }
+          >
             <Typography sx={{ marginBottom: "15px" }}>
               CUOTAS (completar sólo uno)
             </Typography>
@@ -252,7 +261,7 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
               sx={
                 laptop
                   ? { margin: "0px 15px", width: "190px" }
-                  : { margin: "10px 0px"}
+                  : { margin: "10px 0px" }
               }
               name="feeValue"
               onChange={handleChange}
