@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import {
   Box,
   Button,
@@ -12,8 +13,37 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import Image from "next/image";
+import { NumericFormat } from 'react-number-format';
+const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
+  props,
+  ref,
+) {
+  const { onChange, ...other } = props;
+
+  return (
+    <NumericFormat
+      {...other}
+      getInputRef={ref}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      thousandSeparator
+      valueIsNumericString
+    />
+  );
+});
+
+NumericFormatCustom.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
   const [handingOver, setHandingOver] = useState("false");
@@ -163,11 +193,13 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
       </Typography>
       <Box
         sx={
-          laptop ? { width: "90%", margin: "10px auto", display: "flex" } : {}
+          laptop
+            ? { width: "90%", margin: "10px auto", display: "flex" }
+            : {  }
         }
       >
         <Box sx={laptop ? { width: "60%" } : {}}>
-          <Box sx={laptop ? {} : { paddingLeft: "50px", marginTop: "10px" }}>
+          <Box sx={laptop ? {} : { marginTop: "10px", padding: '0px 50px' }}>
             <Typography sx={{ marginBottom: "10px" }}>
               Información sobre el vehículo
             </Typography>
@@ -177,11 +209,16 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
               name="name"
               onChange={handleChange}
               value={dataForm.name}
+              fullWidth
             />
             <TextField
               label="Valor vehículo"
               size="small"
-              sx={laptop ? { margin: "0px 15px", width: '190px' } : { margin: "10px 0px", width: '190px' }}
+              sx={
+                laptop
+                  ? { margin: "0px 15px", width: "190px" }
+                  : { margin: "10px 0px" }
+              }
               name="value"
               onChange={handleChange}
               value={dataForm.value}
@@ -191,16 +228,12 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
                     <AttachMoneyIcon />
                   </InputAdornment>
                 ),
+                inputComponent: NumericFormatCustom,
               }}
+              fullWidth
             />
           </Box>
-          <Box
-            sx={
-              laptop
-                ? { margin: "20px 0px" }
-                : { margin: "10px auto", paddingLeft: "50px" }
-            }
-          >
+          <Box sx={laptop ? { margin: "20px 0px" } : { margin: "10px auto", padding: '0px 50px' }}>
             <Typography sx={{ marginBottom: "15px" }}>
               CUOTAS (completar sólo uno)
             </Typography>
@@ -211,11 +244,16 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
               onChange={handleChange}
               value={dataForm.feeAmount}
               disabled={dataForm.feeValue !== "" ? true : false}
+              fullWidth
             />
             <TextField
               label="Valor de cuota"
               size="small"
-              sx={laptop ? { margin: "0px 15px", width: '190px'  } : { margin: "10px 0px", width: '190px'  }}
+              sx={
+                laptop
+                  ? { margin: "0px 15px", width: "190px" }
+                  : { margin: "10px 0px"}
+              }
               name="feeValue"
               onChange={handleChange}
               value={dataForm.feeValue}
@@ -226,7 +264,9 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
                     <AttachMoneyIcon />
                   </InputAdornment>
                 ),
+                inputComponent: NumericFormatCustom,
               }}
+              fullWidth
             />
           </Box>
         </Box>
@@ -274,7 +314,7 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
               <TextField
                 label="Capital en total"
                 size="small"
-                sx={{ marginTop: "20px", width: '190px' }}
+                sx={{ marginTop: "20px", width: "190px" }}
                 name="instalmentValue"
                 onChange={handleChange}
                 value={dataForm.instalmentValue}
@@ -284,6 +324,7 @@ export const FormCard = ({ setDataForm, dataForm, setshowFinancing }) => {
                       <AttachMoneyIcon />
                     </InputAdornment>
                   ),
+                  inputComponent: NumericFormatCustom,
                 }}
               />
             </Box>
